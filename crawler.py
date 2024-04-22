@@ -21,8 +21,8 @@ df = pd.read_csv('anime.csv')
 
 # Define the GraphQL query
 query = '''
-query ($search: String) {
-  Media (type: ANIME, search: $search) {
+query ($id: Int) {
+  Media (id: $id, type: ANIME) {
     title {
       romaji
     }
@@ -39,11 +39,13 @@ url = 'https://graphql.anilist.co'
 requests_per_minute = 80
 request_interval = 60 / requests_per_minute  # Calculate delay between requests
 
+Not_found_list = []
+
 # Iterate through the anime names in the CSV
 for index, row in df.iterrows():
     anime_name = row['name']
     anime_id = row['anime_id']
-    variables = {'search': anime_name}
+    variables = {'id': anime_id}
     response = requests.post(url, json={'query': query, 'variables': variables})
     json_data = response.json()
 
@@ -56,7 +58,13 @@ for index, row in df.iterrows():
             print(f"Downloaded image for {anime_name} with ID {anime_id}")
         else:
             print(f"No image found for {anime_name} with ID {anime_id}")
+            Not_found_list.append({"id": anime_id, "name": anime_name})
     else:
         print(f"No data found for {anime_name} with ID {anime_id}")
+        Not_found_list.append({"id": anime_id, "name": anime_name})
 
     time.sleep(request_interval)  # Delay between each request to avoid hitting the API rate limit
+
+with open('Not-found-list.txt', 'w') as file:
+    for dictionary in Not_found_list:
+        file.write(str(dictionary) + '\n')
