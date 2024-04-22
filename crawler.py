@@ -45,6 +45,14 @@ Not_found_list = []
 for index, row in df.iterrows():
     anime_name = row['name']
     anime_id = row['anime_id']
+
+    image_path = f'anime_images/{anime_id}.jpg'
+    # Check if the image file already exists
+    if os.path.exists(image_path):
+        print(
+            f"Image for {anime_name} with ID {anime_id} already exists.")
+        continue
+
     variables = {'id': anime_id}
     response = requests.post(url, json={'query': query, 'variables': variables})
     json_data = response.json()
@@ -59,9 +67,11 @@ for index, row in df.iterrows():
         else:
             print(f"No image found for {anime_name} with ID {anime_id}")
             Not_found_list.append({"id": anime_id, "name": anime_name})
+            print(f'item has been added to list{Not_found_list[-1]}')
     else:
         print(f"No data found for {anime_name} with ID {anime_id}")
         Not_found_list.append({"id": anime_id, "name": anime_name})
+        print(f'item has been added to list{Not_found_list[-1]}')
 
     time.sleep(request_interval)  # Delay between each request to avoid hitting the API rate limit
 
