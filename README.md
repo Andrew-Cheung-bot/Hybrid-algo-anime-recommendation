@@ -20,7 +20,7 @@ $ npm install
 $ npm run dev
 ```
 ## 4. Website
-- [localhost:3000](localhost:3000) -> front-end
-- [localhost:5001](localhost:5001) -> back-end
+- [localhost:3000](http://localhost:3000) -> front-end
+- [localhost:5001](http://localhost:5001) -> back-end
 ## Reference
 <p id="ref1">[1]“Anime Recommendations Database,” Kaggle, Dec. 21, 2016. https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database</p>
