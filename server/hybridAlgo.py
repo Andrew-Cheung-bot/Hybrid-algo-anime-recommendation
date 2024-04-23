@@ -24,6 +24,7 @@ def calculate_weights(user_ratings):
     return content_weight, collaborative_weight
 
 def content_based_recommendations(anime_id, anime_data, cosine_sim):
+    # print(type(anime_id))
     idx = anime_data.index[anime_data['anime_id'] == anime_id].tolist()[0]
     sim_scores = list(enumerate(cosine_sim[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
@@ -37,7 +38,7 @@ def hybrid_recommendations(new_user_id, user_ratings, model, anime_data, cosine_
 
     content_recommendations = []
     for anime_id in user_ratings.keys():
-        content_recommendations.extend(content_based_recommendations(anime_id, anime_data, cosine_sim))
+        content_recommendations.extend(content_based_recommendations(int(anime_id), anime_data, cosine_sim))
 
     cf_predictions = []
     content_scores = {}
@@ -52,7 +53,8 @@ def hybrid_recommendations(new_user_id, user_ratings, model, anime_data, cosine_
         hybrid_score = content_weight * content_score + collaborative_weight * cf_score
         recommendations.append({
             'anime_id': anime_id,
-            'name': anime_data[anime_data['anime_id'] == anime_id]['name'].iloc[0],
+            'anime_name': anime_data[anime_data['anime_id'] == anime_id]['name'].iloc[0],
+            "image_path": "/anime_images/" + str(anime_id) + ".jpg",
             'hybrid_score': hybrid_score,
             'content_similarity': content_score,
             'predicted_rating': cf_score

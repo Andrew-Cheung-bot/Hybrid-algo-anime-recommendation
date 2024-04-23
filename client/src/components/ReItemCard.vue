@@ -15,10 +15,21 @@
         <v-expand-transition>
             <v-card v-if="reveal" class="position-absolute w-100" height="100%" style="bottom: 0;">
                 <v-card-text class="pb-0">
-                    <p class="text-h5 text mb-2">Anime Genre</p>
-                    <v-chip v-for="item in props.Data.genre" class="mb-3 mr-3" color="green" size=" small" label>
+                    <p class="text-h7 text mb-2">Why recommended</p>
+                    <p class="text">Hybrid Score: </p>
+                    <v-chip class="mb-3 mr-3" color="green" size=" small" label>
                         <v-icon icon="mdi-label" start></v-icon>
-                        {{ item }}
+                        {{ props.Data.hybrid_score }}
+                    </v-chip>
+                    <p class="text">Predicted Rating: </p>
+                    <v-chip class="mb-3 mr-3" color="green" size=" small" label>
+                        <v-icon icon="mdi-label" start></v-icon>
+                        {{ props.Data.predicted_rating }}
+                    </v-chip>
+                    <p class="text">Content Similarity: </p>
+                    <v-chip class="mb-3 mr-3" color="green" size=" small" label>
+                        <v-icon icon="mdi-label" start></v-icon>
+                        {{ props.Data.content_similarity }}
                     </v-chip>
                 </v-card-text>
             </v-card>
