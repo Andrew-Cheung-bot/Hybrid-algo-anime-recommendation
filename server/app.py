@@ -69,13 +69,8 @@ def rate_animes():
     ratings_data = pd.read_csv('rating.csv')
 
     data = request.json
-    user_ratings = data['ratings']
-    user_ratings = json.loads(user_ratings)
+    user_ratings = json.loads(data['ratings'])
     # print('user_rating', user_ratings)
-
-    # Load data for each request to ensure thread safety
-    anime_data = pd.read_csv('anime.csv')
-    ratings_data = pd.read_csv('rating.csv')
 
     # Add new user's ratings to ratings_data
     new_user_id = ratings_data['user_id'].max() + 1
