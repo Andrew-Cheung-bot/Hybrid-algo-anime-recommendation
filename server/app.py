@@ -8,6 +8,7 @@ from surprise.model_selection import train_test_split
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+# from werkzeug.middleware.proxy_fix import ProxyFix
 import json
 
 # instantiate the app
@@ -15,7 +16,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 # enable CORS
-CORS(app, resources={r'/*': {'origins': '*'}})
+CORS(app, resources={r'/*': {'origins': '*'}}, supports_credentials=True)
 
 # sanity check route
 
@@ -106,4 +107,9 @@ def rate_animes():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0",port=5001,debug=True)
+    # if you use gunicorn to deploy on server, run the codes below
+    # app.wsgi_app = ProxyFix(app.wsgi_app)
+    # app.run()
+
+    # bash command: gunicorn -w 5 -b 0.0.0.0:5001 app:app
