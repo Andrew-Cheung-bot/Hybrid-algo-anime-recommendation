@@ -16,14 +16,14 @@ $ conda activate ./.conda
 ```
 > If you use `pip` to install scikit-surprise, you may encounter an error that requires Microsoft Visual C++ build tools 14.0 or higher version.  
 >
-> This hybrid algorithm needs at least 2gb RAM to run, otherwise flask would crash.
+> This hybrid algorithm needs at least 2GB RAM to run, otherwise Flask would crash.
 ## 3. Front-end server (Vue3.js)
 ```bash
 $ cd client
 $ npm install
 $ npm run dev
 ```
-> Please ensure that your [Node.js](https://nodejs.org/en/download) version is greater than `v18.20.2(LTS)`.  
+> Please ensure that your [Node.js](https://nodejs.org/en/download) version is higher than `v18.20.2(LTS)`.  
 ## 4. Website
 - [localhost:3000](http://localhost:3000) -> front-end
 - [localhost:5001](http://localhost:5001) -> back-end
