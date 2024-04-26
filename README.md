@@ -4,7 +4,7 @@
 - But still need to download images dataset for running
     - Download link : [anime_images](https://drive.google.com/file/d/1m_zUt278LqlSNLmq9QsRo_jYgQmikmh9/view?usp=sharing).
     - Create a new folder named "anime_images" below `./client/public/`. 
-    - move *anime_images.zip* to `./client/public/anime_images` and unzip.
+    - Move *anime_images.zip* to `./client/public/anime_images` and unzip.
 ## 2. Back-end server (Flask)
 ```bash
 # Anaconda Powershell Prompt
@@ -24,8 +24,8 @@ $ npm install
 $ npm run dev
 ```
 > Please ensure that your [Node.js](https://nodejs.org/en/download) version is higher than `v18.20.2(LTS)`.  
-## 4. Website
-- [localhost:3000](http://localhost:3000) -> front-end
-- [localhost:5001](http://localhost:5001) -> back-end
+## 4. Deployment
+- Front-end: [localhost:3000](http://localhost:3000)
+- Back-end: [localhost:5001](http://localhost:5001)
 ## Reference
 <p id="ref1">[1]“Anime Recommendations Database,” Kaggle, Dec. 21, 2016. https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database</p>
