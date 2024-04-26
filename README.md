@@ -2,23 +2,28 @@
 ## 1. Download image dataset
 - This repo has already downloaded *Anime Recommendations Database*<sup><a href="#ref1">1</a></sup> from Kaggle
 - But still need to download images dataset for running
-    - Download link : [anime_images](https://drive.google.com/file/d/1m_zUt278LqlSNLmq9QsRo_jYgQmikmh9/view?usp=sharing)
-    - move it to `./client/public/` folder below
+    - Download link : [anime_images](https://drive.google.com/file/d/1m_zUt278LqlSNLmq9QsRo_jYgQmikmh9/view?usp=sharing).
+    - Create a new folder named "anime_images" below `./client/public/`. 
+    - move *anime_images.zip* to `./client/public/anime_images` and unzip.
 ## 2. Back-end server (Flask)
 ```bash
+# Anaconda Powershell Prompt
 $ cd server
-$ python3 -m venv env
-$ source env/bin/activate
-(env)$ pip install -r requirements.txt
+$ conda create --prefix ./.conda python=3.11 --file requirements.txt
+$ conda activate ./.conda  
+(env)$ conda install -c conda-forge scikit-surprise
 (env)$ flask run --port=5001 --debug
 ```
-> Besides, you can use Anaconda/miniconda to create virtual Environment.
+> If you use `pip` to install scikit-surprise, you may encounter an error that requires Microsoft Visual C++ build tools 14.0 or higher version.  
+>
+> This hybrid algorithm needs at least 2gb RAM to run, otherwise flask would crash.
 ## 3. Front-end server (Vue3.js)
 ```bash
 $ cd client
 $ npm install
 $ npm run dev
 ```
+> Please ensure that your [Node.js](https://nodejs.org/en/download) version is greater than `v18.20.2(LTS)`.  
 ## 4. Website
 - [localhost:3000](http://localhost:3000) -> front-end
 - [localhost:5001](http://localhost:5001) -> back-end

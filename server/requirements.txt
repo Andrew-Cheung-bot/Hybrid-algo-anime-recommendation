@@ -1,5 +1,4 @@
-Flask==2.2.3
 Flask-Cors==3.0.10
-Pandas
+Flask==2.2.5
 scikit-learn
-scikit-surprise
+pandas
